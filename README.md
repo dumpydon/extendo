@@ -30,23 +30,43 @@
 
 ## 🚀 How to Install
 
-### Step 1: Download the Extension (Choose Method A or B)
-
-#### Method A: 1-Click ZIP Download (Easiest — No Git required)
-👉 **[Click here to Download extendo.zip](https://github.com/dumpydon/extendo/raw/main/extendo.zip)**  
-*(Or click the green **<> Code** button at the top of this page → **Download ZIP**)*
-
-After downloading, unzip the file to get the `extendo` folder.
-
-#### Method B: Clone via Git (Terminal / Git Bash)
-Run this command in your terminal or Git Bash:
-```bash
-git clone https://github.com/dumpydon/extendo.git
+```mermaid
+graph TD
+    A["Choose ONE way to get Extendo"] --> B["📦 Option A: 1-Click ZIP Download"]
+    A --> C["⚡ Option B: Clone via Git"]
+    B --> D["Unzip the folder"]
+    C --> E["Open chrome://extensions"]
+    D --> E
+    E --> F["Turn ON 'Developer Mode'"]
+    F --> G["Click 'Load unpacked' & select folder"]
+    G --> H["🎉 Ready on LeetCode!"]
 ```
+
+### Step 1: Get the Code (Choose ONE Option)
+
+<table>
+  <tr>
+    <th width="50%" align="center">📦 Option A: 1-Click ZIP (Easiest — No Git)</th>
+    <th width="50%" align="center">⚡ Option B: Git Clone (Terminal / Git Bash)</th>
+  </tr>
+  <tr valign="top">
+    <td>
+      <ol>
+        <li>👉 <a href="https://github.com/dumpydon/extendo/raw/main/extendo.zip"><b>Download extendo.zip</b></a><br>
+        <i>(or click green <b>&lt;&gt; Code</b> button &rarr; <b>Download ZIP</b>)</i></li>
+        <li><b>Extract / Unzip</b> the file on your computer.</li>
+      </ol>
+    </td>
+    <td>
+      <p>Run this in Terminal or Git Bash:</p>
+      <code>git clone https://github.com/dumpydon/extendo.git</code>
+    </td>
+  </tr>
+</table>
 
 ---
 
-### Step 2: Load Extension in Google Chrome (30 Seconds)
+### Step 2: Load in Google Chrome (30 Seconds)
 
 1. Open Google Chrome and go to:
    ```
@@ -56,7 +76,7 @@ git clone https://github.com/dumpydon/extendo.git
 3. Click the **Load unpacked** button in the top-left corner.
 4. Select the unzipped `extendo` folder.
 
-🎉 Done! Open any [LeetCode Playground](https://leetcode.com/playground/) and enjoy!
+🎉 **Done!** Open any [LeetCode Playground](https://leetcode.com/playground/) and enjoy!
 
 ---
 
