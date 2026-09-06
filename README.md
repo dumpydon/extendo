@@ -30,15 +30,33 @@
 
 ## 🚀 How to Install
 
-1. **Download**: Clone this repository or download it as a ZIP and extract it:
-   ```bash
-   git clone git@github.com:dumpydon/extendo.git
-   ```
-2. **Open Extensions**: In Google Chrome, navigate to `chrome://extensions`.
-3. **Enable Developer Mode**: Turn on the **Developer mode** switch in the top-right corner.
-4. **Load Extension**: Click **Load unpacked** (top-left) and select this `extendo` folder.
+### Step 1: Download the Extension (Choose Method A or B)
 
-Open any [LeetCode Playground](https://leetcode.com/playground/) and enjoy!
+#### Method A: 1-Click ZIP Download (Easiest — No Git required)
+👉 **[Click here to Download extendo.zip](https://github.com/dumpydon/extendo/raw/main/extendo.zip)**  
+*(Or click the green **<> Code** button at the top of this page → **Download ZIP**)*
+
+After downloading, unzip the file to get the `extendo` folder.
+
+#### Method B: Clone via Git (Terminal / Git Bash)
+Run this command in your terminal or Git Bash:
+```bash
+git clone https://github.com/dumpydon/extendo.git
+```
+
+---
+
+### Step 2: Load Extension in Google Chrome (30 Seconds)
+
+1. Open Google Chrome and go to:
+   ```
+   chrome://extensions
+   ```
+2. Turn **ON** the **Developer mode** toggle in the top-right corner.
+3. Click the **Load unpacked** button in the top-left corner.
+4. Select the unzipped `extendo` folder.
+
+🎉 Done! Open any [LeetCode Playground](https://leetcode.com/playground/) and enjoy!
 
 ---
 
