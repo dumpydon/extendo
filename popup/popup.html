@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extendo - LeetCode Shortcuts & Dark Mode</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <img src="../icons/icon48.png" class="logo-img" alt="Extendo Logo">
+        <div class="brand-text">
+          <h1>Extendo</h1>
+          <span class="version">v1.4.6</span>
+        </div>
+      </div>
+      <div class="status-badge" id="statusBadge">
+        <span class="status-dot"></span>
+        <span class="status-text" id="statusText">Active</span>
+      </div>
+    </header>
+
+    <!-- Master Toggle Control -->
+    <div class="toggle-card">
+      <div class="toggle-info">
+        <span class="toggle-title">Extension Shortcuts</span>
+        <span class="toggle-subtitle" id="toggleSubtitle">Shortcuts are active</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="extendoToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Appearance / Theme Selector (Official LeetCode Style) -->
+    <div class="theme-card">
+      <div class="theme-header">
+        <span class="theme-title">🎨 Appearance</span>
+        <span class="theme-active-label" id="themeActiveLabel">System Default</span>
+      </div>
+      <div class="theme-options">
+        <button type="button" class="theme-option" data-theme="system" id="themeSystemBtn">
+          <div class="theme-option-left">
+            <span class="theme-icon">💻</span>
+            <span class="theme-name">System Default</span>
+          </div>
+          <span class="theme-check">✓</span>
+        </button>
+
+        <button type="button" class="theme-option" data-theme="light" id="themeLightBtn">
+          <div class="theme-option-left">
+            <span class="theme-icon">☀️</span>
+            <span class="theme-name">Light</span>
+          </div>
+          <span class="theme-check">✓</span>
+        </button>
+
+        <button type="button" class="theme-option" data-theme="dark" id="themeDarkBtn">
+          <div class="theme-option-left">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-name">Dark</span>
+          </div>
+          <span class="theme-check">✓</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Line Highlight Strip Color -->
+    <div class="strip-card">
+      <div class="theme-header">
+        <span class="theme-title">✨ Line Highlight</span>
+        <span class="strip-active-label" id="stripActiveLabel">Blue</span>
+      </div>
+      <div class="strip-color-grid">
+        <button type="button" class="strip-chip active" data-strip="blue" title="Blue">
+          <span class="strip-dot" style="background-color: #388bfd;"></span>
+          <span class="strip-name">Blue</span>
+        </button>
+        <button type="button" class="strip-chip" data-strip="yellow" title="Yellow">
+          <span class="strip-dot" style="background-color: #dcdcaa;"></span>
+          <span class="strip-name">Yellow</span>
+        </button>
+        <button type="button" class="strip-chip" data-strip="green" title="Green">
+          <span class="strip-dot" style="background-color: #6a9955;"></span>
+          <span class="strip-name">Green</span>
+        </button>
+        <button type="button" class="strip-chip" data-strip="red" title="Red">
+          <span class="strip-dot" style="background-color: #f44747;"></span>
+          <span class="strip-name">Red</span>
+        </button>
+        <button type="button" class="strip-chip" data-strip="magenta" title="Magenta">
+          <span class="strip-dot" style="background-color: #c586c0;"></span>
+          <span class="strip-name">Magenta</span>
+        </button>
+        <button type="button" class="strip-chip" data-strip="pink" title="Pink">
+          <span class="strip-dot" style="background-color: #ff79c6;"></span>
+          <span class="strip-name">Pink</span>
+        </button>
+        <button type="button" class="strip-chip" data-strip="orange" title="Orange">
+          <span class="strip-dot" style="background-color: #ce9178;"></span>
+          <span class="strip-name">Orange</span>
+        </button>
+        <button type="button" class="strip-chip" data-strip="white" title="White">
+          <span class="strip-dot" style="background-color: #eff1f6;"></span>
+          <span class="strip-name">White</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Context Notice -->
+    <div class="context-banner" id="contextBanner">
+      <span class="banner-icon">🎯</span>
+      <span class="banner-text" id="bannerText">Optimized for LeetCode Playground</span>
+    </div>
+
+    <!-- Shortcuts Table -->
+    <section class="shortcuts-section">
+      <div class="section-title">
+        <span>Active Keyboard Shortcuts</span>
+        <span class="platform-label" id="platformLabel">macOS</span>
+      </div>
+
+      <div class="shortcut-card">
+        <div class="shortcut-info">
+          <span class="shortcut-name">Duplicate Line Down</span>
+          <span class="shortcut-desc">Copies line(s) directly below</span>
+        </div>
+        <div class="keys">
+          <kbd>⌘</kbd><kbd>⌥</kbd><kbd>↓</kbd>
+        </div>
+      </div>
+
+      <div class="shortcut-card">
+        <div class="shortcut-info">
+          <span class="shortcut-name">Duplicate Line Up</span>
+          <span class="shortcut-desc">Copies line(s) directly above</span>
+        </div>
+        <div class="keys">
+          <kbd>⌘</kbd><kbd>⌥</kbd><kbd>↑</kbd>
+        </div>
+      </div>
+
+      <div class="shortcut-card">
+        <div class="shortcut-info">
+          <span class="shortcut-name">Move Line Down</span>
+          <span class="shortcut-desc">Swaps line(s) with the line below</span>
+        </div>
+        <div class="keys">
+          <kbd>⌥</kbd><kbd>↓</kbd>
+        </div>
+      </div>
+
+      <div class="shortcut-card">
+        <div class="shortcut-info">
+          <span class="shortcut-name">Move Line Up</span>
+          <span class="shortcut-desc">Swaps line(s) with the line above</span>
+        </div>
+        <div class="keys">
+          <kbd>⌥</kbd><kbd>↑</kbd>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notes -->
+    <div class="notes-box">
+      <p><strong>Pro-Tip:</strong> Also supports VS Code standard <kbd>⇧</kbd><kbd>⌥</kbd><kbd>↓</kbd> / <kbd>↑</kbd> and Windows/Linux <kbd>Alt</kbd> keys. Works with multi-line selections!</p>
+    </div>
+
+    <!-- Footer Actions -->
+    <footer class="footer">
+      <a href="https://leetcode.com/playground/" target="_blank" class="btn-primary" id="openPlaygroundBtn">
+        Open LeetCode Playground ↗
+      </a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

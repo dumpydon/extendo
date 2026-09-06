@@ -1,0 +1,979 @@
+/**
+ * Extendo - Official LeetCode Dark Mode Theme for Playground (v1.4.6)
+ * Exact color parity with LeetCode's official dark mode:
+ * - Editor & Panes surface: #262626 (authentic LeetCode dark grey)
+ * - Text selection: #264f78 (vibrant classic LeetCode / VS Code blue)
+ * - Control keywords (import, from, for, in, return, if, else, while, etc.): #c586c0 (pinkish-purple)
+ * - Declarations (def, class, lambda): #569cd6 (blue)
+ * - Variables & library names (math, sys, collections, etc.): #eff1f6 (clean white/off-white)
+ * - Built-in functions (print, range, len, int, map, list): #4ec9b0 (cyan/teal)
+ * - Function definitions (def solve): #dcdcaa (yellow)
+ * - Comments: #6a9955 (green, italic)
+ * - Docstrings & Strings: #ce9178 (terracotta / orange)
+ * - Numbers: #b5cea8 (light sage)
+ * - Full dark layout for Left Pane, Output Pane, Stdin, Splitter, Subheader, and Scrollbars.
+ * 
+ * Double-guarded: Only applies when data-extendo-theme="dark" AND NOT data-extendo-enabled="false".
+ * When toggle is OFF or Light mode is selected, Light Mode is 100% untouched.
+ */
+
+/* ==========================================================================
+   CodeMirror 5 Editor Core & Background (#262626)
+   ========================================================================== */
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-scroll {
+  background-color: #262626 !important;
+  background: #262626 !important;
+  color: #eff1f6 !important;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace !important;
+}
+
+/* Keep line containers transparent so underlying selection highlight is 100% visible */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-sizer,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-lines,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-code,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-line {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror pre.CodeMirror-line,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror pre.CodeMirror-line-like {
+  color: #eff1f6 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Gutters & Line Numbers */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-gutters {
+  background-color: #262626 !important;
+  background: #262626 !important;
+  border-right: 1px solid #333333 !important;
+  white-space: nowrap !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-linenumber {
+  color: #737373 !important;
+}
+
+/* ==========================================================================
+   Active Line Highlight - Configurable Faint Tint Palette (8 Colors)
+   Calibrated to match exact whisper-soft intensity across all choices
+   ========================================================================== */
+
+/* 1. Blue (Default) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-activeline-gutter,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-activeLine,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .monaco-editor .current-line,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) .CodeMirror-activeline-gutter,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) .cm-activeLine,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) .monaco-editor .current-line {
+  background-color: rgba(38, 79, 120, 0.12) !important;
+  background: rgba(38, 79, 120, 0.12) !important;
+  opacity: 1 !important;
+}
+
+/* 2. Yellow */
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) .CodeMirror-activeline-gutter,
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) .cm-activeLine,
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) .monaco-editor .current-line {
+  background-color: rgba(220, 220, 170, 0.08) !important;
+  background: rgba(220, 220, 170, 0.08) !important;
+  opacity: 1 !important;
+}
+
+/* 3. Green */
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) .CodeMirror-activeline-gutter,
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) .cm-activeLine,
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) .monaco-editor .current-line {
+  background-color: rgba(106, 153, 85, 0.10) !important;
+  background: rgba(106, 153, 85, 0.10) !important;
+  opacity: 1 !important;
+}
+
+/* 4. Red */
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) .CodeMirror-activeline-gutter,
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) .cm-activeLine,
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) .monaco-editor .current-line {
+  background-color: rgba(244, 71, 71, 0.08) !important;
+  background: rgba(244, 71, 71, 0.08) !important;
+  opacity: 1 !important;
+}
+
+/* 5. Magenta */
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) .CodeMirror-activeline-gutter,
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) .cm-activeLine,
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) .monaco-editor .current-line {
+  background-color: rgba(197, 134, 192, 0.09) !important;
+  background: rgba(197, 134, 192, 0.09) !important;
+  opacity: 1 !important;
+}
+
+/* 6. Pink */
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) .CodeMirror-activeline-gutter,
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) .cm-activeLine,
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) .monaco-editor .current-line {
+  background-color: rgba(255, 121, 198, 0.08) !important;
+  background: rgba(255, 121, 198, 0.08) !important;
+  opacity: 1 !important;
+}
+
+/* 7. Orange */
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) .CodeMirror-activeline-gutter,
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) .cm-activeLine,
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) .monaco-editor .current-line {
+  background-color: rgba(206, 145, 120, 0.09) !important;
+  background: rgba(206, 145, 120, 0.09) !important;
+  opacity: 1 !important;
+}
+
+/* 8. White */
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) .CodeMirror-activeline-gutter,
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) .cm-activeLine,
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) .monaco-editor .current-line {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  opacity: 1 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-activeline .CodeMirror-linenumber {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Editor Cursor / Caret Blinker - Crisp 100% Pure White (#ffffff)
+   ========================================================================== */
+
+/* CodeMirror 5 & 6 visual cursor line */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-secondarycursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div.CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div.CodeMirror-secondarycursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-cursors .CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror div.CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-cursor-primary,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-cursor-secondary,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-dropCursor {
+  border-left: 2px solid #ffffff !important;
+  border-left-color: #ffffff !important;
+  border-color: #ffffff !important;
+  border-right-color: transparent !important;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
+  filter: none !important;
+  box-shadow: none !important;
+  z-index: 99 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-cursors,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div.CodeMirror-cursors {
+  opacity: 1 !important;
+  filter: none !important;
+  z-index: 99 !important;
+}
+
+/* Monaco Editor Cursor */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .monaco-editor .cursors-layer .cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .monaco-editor .cursor {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Caret Color across all text inputs, textareas, CodeMirror lines, and contenteditables */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror textarea,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-scroll,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-lines,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-code,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-line,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror pre,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-editor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-content,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [contenteditable],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) textarea,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) textarea[class*="stdin"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="stdin"] textarea,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane2 textarea,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) input {
+  caret-color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Text Selection Highlight (#264f78) - Crisp, Vibrant, Always Visible
+   ========================================================================== */
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div.CodeMirror-selected,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-selected,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-focused .CodeMirror-selected {
+  background-color: #264f78 !important;
+  background: #264f78 !important;
+  opacity: 1 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) ::selection,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) *::selection,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror ::selection,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-line::selection,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-line *::selection,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-line > span::selection,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-line > span > span::selection {
+  background-color: #264f78 !important;
+  background: #264f78 !important;
+  color: #ffffff !important;
+}
+
+/* Code Folding arrows (▾ / ▸) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-foldgutter-open:after {
+  color: #858585 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-foldgutter-folded:after {
+  color: #c6c6c6 !important;
+}
+
+/* ==========================================================================
+   Python Syntax Highlighting (Exact Official LeetCode Dark Palette)
+   ========================================================================== */
+
+/* 1. Control Keywords: import, from, for, in, return, if, else, while, with, as, try, etc. */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-kw-purple,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) span.cm-keyword.extendo-kw-purple {
+  color: #c586c0 !important;
+  font-weight: 500 !important;
+}
+
+/* Default keyword fallback (all keywords in dark mode default to LeetCode purple) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-keyword {
+  color: #c586c0 !important;
+  font-weight: 500 !important;
+}
+
+/* 2. Declaration Keywords: def, class, lambda */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-kw-blue,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) span.cm-keyword.extendo-kw-blue {
+  color: #569cd6 !important;
+  font-weight: 500 !important;
+}
+
+/* 3. Function definitions & names (def solve, def splitString) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-def {
+  color: #dcdcaa !important;
+  font-weight: normal !important;
+}
+
+/* 4. Built-in functions & types (print, range, len, int, map, list, str, bool) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-builtin-cyan,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-builtin,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-variable-3,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-type {
+  color: #4ec9b0 !important;
+}
+
+/* 5. Parameters / self */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-variable-2 {
+  color: #9cdcfe !important;
+}
+
+/* 6. Standard identifiers, variables, imported library names (sys, math, collections, etc.) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-variable {
+  color: #eff1f6 !important;
+}
+
+/* 7. Properties & method invocations (.readline, .rstrip, .split, .append) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-property {
+  color: #dcdcaa !important;
+}
+
+/* 8. Comments (# ...) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-comment {
+  color: #6a9955 !important;
+  font-style: italic !important;
+}
+
+/* 9. Strings (single and double quoted) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-string {
+  color: #ce9178 !important;
+}
+
+/* 10. Docstrings (triple quoted """...""" / '''...''') */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-string-2 {
+  color: #ce9178 !important;
+}
+
+/* 11. Numbers & numeric literals (0, 1, 20, 1e9) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-number {
+  color: #b5cea8 !important;
+}
+
+/* 12. Operators & Punctuation (+, -, *, /, =, ==, :, ->, (), [], {}) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-operator {
+  color: #d4d4d4 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-bracket,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .cm-punctuation {
+  color: #ffd700 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-matchingbracket {
+  outline: 1px solid #707070 !important;
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ==========================================================================
+   Complete Playground Layout Dark UI (Fixing Top & Bottom Strips)
+   ========================================================================== */
+
+/* Main layout wrappers & body */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]),
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) body,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) #app,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) #app > div,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .playground,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .playground-container,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="playground"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Playground"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="playground-wrapper"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="layout"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .main-content {
+  background-color: #262626 !important;
+  color: #eff1f6 !important;
+}
+
+/* ==========================================================================
+   SplitPanes, Pane 1 (Editor Side) & Pane 2 (Output Side)
+   Eliminates all white borders, white margins, and 5px strips at top and bottom
+   ========================================================================== */
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .SplitPane,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .split-pane,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="SplitPane"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="split-pane"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane1,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane2,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Pane"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="pane"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="editor-wrapper"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="editor-container"] {
+  background-color: #262626 !important;
+  background: #262626 !important;
+  color: #eff1f6 !important;
+  border-color: #333333 !important;
+}
+
+/* Target all inner wrapper divs in Pane 1 to eliminate top & bottom 5px white gaps */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane1 div:not(.CodeMirror-activeline-background):not(.CodeMirror-selected):not(.CodeMirror-cursor):not(.CodeMirror-cursors):not(.CodeMirror-secondarycursor):not(.CodeMirror-line):not(.CodeMirror-lines):not(.CodeMirror-sizer):not(.CodeMirror-code),
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div:not(.CodeMirror-activeline-background):not(.CodeMirror-selected):not(.CodeMirror-cursor):not(.CodeMirror-cursors):not(.CodeMirror-secondarycursor):not(.CodeMirror-line):not(.CodeMirror-lines):not(.CodeMirror-sizer):not(.CodeMirror-code),
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .SplitPane > div:first-child,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .SplitPane > div:first-child div:not(.CodeMirror-activeline-background):not(.CodeMirror-selected):not(.CodeMirror-cursor):not(.CodeMirror-cursors):not(.CodeMirror-secondarycursor),
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="SplitPane"] > div:first-child,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="SplitPane"] > div:first-child div:not(.CodeMirror-activeline-background):not(.CodeMirror-selected):not(.CodeMirror-cursor):not(.CodeMirror-cursors):not(.CodeMirror-secondarycursor),
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="editor"] div:not(.CodeMirror-activeline-background):not(.CodeMirror-selected):not(.CodeMirror-cursor):not(.CodeMirror-cursors):not(.CodeMirror-secondarycursor),
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Editor"] div:not(.CodeMirror-activeline-background):not(.CodeMirror-selected):not(.CodeMirror-cursor):not(.CodeMirror-cursors):not(.CodeMirror-secondarycursor),
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-dark-surface,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-dark-surface div:not(.CodeMirror-activeline-background):not(.CodeMirror-selected):not(.CodeMirror-cursor):not(.CodeMirror-cursors):not(.CodeMirror-secondarycursor),
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-dark-surface section,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-dark-surface header,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-dark-surface footer {
+  background-color: #262626 !important;
+  background: #262626 !important;
+  border-color: #333333 !important;
+}
+
+/* Explicit reassertion of Active Line & Selection highlights against all container overrides */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="blue"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background {
+  background-color: rgba(38, 79, 120, 0.12) !important;
+  background: rgba(38, 79, 120, 0.12) !important;
+  opacity: 1 !important;
+}
+
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="yellow"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background {
+  background-color: rgba(220, 220, 170, 0.08) !important;
+  background: rgba(220, 220, 170, 0.08) !important;
+  opacity: 1 !important;
+}
+
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="green"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background {
+  background-color: rgba(106, 153, 85, 0.10) !important;
+  background: rgba(106, 153, 85, 0.10) !important;
+  opacity: 1 !important;
+}
+
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="red"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background {
+  background-color: rgba(244, 71, 71, 0.08) !important;
+  background: rgba(244, 71, 71, 0.08) !important;
+  opacity: 1 !important;
+}
+
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="magenta"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background {
+  background-color: rgba(197, 134, 192, 0.09) !important;
+  background: rgba(197, 134, 192, 0.09) !important;
+  opacity: 1 !important;
+}
+
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="pink"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background {
+  background-color: rgba(255, 121, 198, 0.08) !important;
+  background: rgba(255, 121, 198, 0.08) !important;
+  opacity: 1 !important;
+}
+
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="orange"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background {
+  background-color: rgba(206, 145, 120, 0.09) !important;
+  background: rgba(206, 145, 120, 0.09) !important;
+  opacity: 1 !important;
+}
+
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-activeline-background,
+html[data-extendo-theme="dark"][data-extendo-strip="white"]:not([data-extendo-enabled="false"]) div.CodeMirror-activeline-background {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  opacity: 1 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-selected,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-selected,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror .CodeMirror-selected,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div.CodeMirror-selected {
+  background-color: #264f78 !important;
+  background: #264f78 !important;
+  opacity: 1 !important;
+}
+
+/* Explicit reassertion of Cursor Blinker (100% Crisp White #ffffff) against all container overrides */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane1 div.CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Pane1"] div.CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror div.CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .CodeMirror-cursor,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div.CodeMirror-cursor {
+  border-left: 2px solid #ffffff !important;
+  border-left-color: #ffffff !important;
+  border-color: #ffffff !important;
+  border-right-color: transparent !important;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
+  z-index: 99 !important;
+}
+
+/* Target every element inside Pane 2 (the right output side) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane2,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane2 *,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Pane2"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Pane2"] * {
+  background-color: #262626 !important;
+  color: #eff1f6 !important;
+  border-color: #333333 !important;
+}
+
+/* Top Subheader & Borders */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="header"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Header"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="header-wrapper"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="toolbar"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Toolbar"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .playground-header,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="border-bottom"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) header {
+  background-color: #262626 !important;
+  border-bottom: 1px solid #333333 !important;
+  border-top: none !important;
+  color: #eff1f6 !important;
+}
+
+/* Main navbar bottom divider */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .navbar,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) nav,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) header {
+  border-bottom: 1px solid #333333 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [style*="border-bottom: 1px solid rgb(238, 238, 238)"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [style*="border-bottom: 1px solid #eee"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [style*="border-bottom: 1px solid #e7e7e7"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [style*="border-bottom: 1px solid rgb(231, 231, 231)"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [style*="border-top: 1px solid rgb(238, 238, 238)"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [style*="border-top: 1px solid #eee"] {
+  border-color: #333333 !important;
+}
+
+/* Playground Title */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="title"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) input[class*="title"] {
+  color: #eff1f6 !important;
+  background-color: transparent !important;
+}
+
+/* Action button preserving rules */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="run"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="run-code"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .btn-success {
+  background-color: #2cbb5d !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="primary"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="add-snippet"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .btn-primary {
+  background-color: #33a3dc !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+/* Language selector button (Python3 ▾) & Settings gear button */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="select"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="dropdown"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) select,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .ant-select-selector,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .btn-default {
+  background-color: #2f2f2f !important;
+  border: 1px solid #3e3e3e !important;
+  color: #eff1f6 !important;
+}
+
+/* Dropdown menus & popup options */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .ant-select-dropdown,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .dropdown-menu,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="dropdown-list"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [role="listbox"] {
+  background-color: #262626 !important;
+  border: 1px solid #383838 !important;
+  color: #eff1f6 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .ant-select-item,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .dropdown-menu > li > a,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="dropdown-item"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [role="option"] {
+  color: #eff1f6 !important;
+  background-color: transparent !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .ant-select-item-option-selected,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .ant-select-item-option-active,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .dropdown-menu > li > a:hover,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="dropdown-item"]:hover {
+  background-color: #383838 !important;
+  color: #ffffff !important;
+}
+
+/* Resizer / Splitter between Code and Output */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Resizer,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Resizer.vertical,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="gutter"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="resizer"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="split-pane-divider"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .gutter-horizontal {
+  background-color: #1e1e1e !important;
+  border-left: 1px solid #333333 !important;
+  border-right: 1px solid #333333 !important;
+}
+
+/* ==========================================================================
+   Output Pane, Console, Preformatted Blocks
+   ========================================================================== */
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="output"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="output"] *,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Output"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Output"] *,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="console"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="console"] *,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Console"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Console"] *,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="result"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="result"] *,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Result"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Result"] *,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="terminal"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="stdout"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) pre,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) pre[class*="output"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="output-content"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="console-content"] {
+  background-color: #262626 !important;
+  background: #262626 !important;
+  color: #eff1f6 !important;
+  border-color: #333333 !important;
+}
+
+/* Universal override for any residual inline or computed white backgrounds/borders */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background: white"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background: #fff"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background: #ffffff"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background: rgb(255, 255, 255)"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background-color: white"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background-color: #fff"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background-color: #ffffff"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background-color: rgb(255, 255, 255)"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background-color: rgb(250, 250, 250)"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background-color: rgb(247, 247, 247)"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background-color: rgb(245, 245, 245)"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="background-color: rgb(240, 240, 240)"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) section[style*="background"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) main[style*="background"] {
+  background-color: #262626 !important;
+  background: #262626 !important;
+  color: #eff1f6 !important;
+}
+
+/* Output Header ("Output:") */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="output-header"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="console-header"] {
+  background-color: #222222 !important;
+  color: #eff1f6 !important;
+  border-bottom: 1px solid #333333 !important;
+}
+
+/* Stdin Section & Toggle Button (Bottom Right) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="stdin-wrapper"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="stdin-container"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="stdin"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="stdin-btn"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="stdin"] {
+  background-color: #262626 !important;
+  border-top: 1px solid #333333 !important;
+  color: #eff1f6 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane2 button,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="Pane2"] button,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="stdin"] {
+  background-color: #333333 !important;
+  color: #eff1f6 !important;
+  border: 1px solid #444444 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) textarea[class*="stdin"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="stdin"] textarea,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .Pane2 textarea {
+  background-color: #1e1e1e !important;
+  color: #eff1f6 !important;
+  border: 1px solid #383838 !important;
+}
+
+/* Bottom Bar (Share, Live, Add Snippet) */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="footer"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="bottom-bar"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="action-bar"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="bottom: 0"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) div[style*="bottom:0"] {
+  background-color: #222222 !important;
+  border-top: 1px solid #333333 !important;
+  border-bottom: none !important;
+  color: #eff1f6 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="btn-share"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="share-btn"] {
+  background-color: #2f2f2f !important;
+  border: 1px solid #3e3e3e !important;
+  color: #eff1f6 !important;
+}
+
+/* Connecting / Live Status Button in Dark Mode */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-live-btn,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="live"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="connecting"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="live-btn"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) [class*="connecting-btn"] {
+  background-color: #2f2f2f !important;
+  border: 1px solid #3e3e3e !important;
+  color: #ff6b6b !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-live-btn *,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="live"] *,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="connecting"] * {
+  color: #ff6b6b !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-live-btn span[style*="background"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-live-btn [class*="dot"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-live-btn i,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="live"] [class*="dot"],
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) button[class*="connecting"] [class*="dot"] {
+  background-color: #ff6b6b !important;
+}
+
+/* ==========================================================================
+   Dark Scrollbars
+   ========================================================================== */
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) ::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) ::-webkit-scrollbar-track {
+  background: #262626 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) ::-webkit-scrollbar-thumb {
+  background: #444444 !important;
+  border-radius: 5px !important;
+  border: 2px solid #262626 !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) ::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a !important;
+}
+
+/* ==========================================================================
+   LeetCode-Style Stdin Drawer Horizontal Divider & Slider
+   ========================================================================== */
+
+/* Pane2 flex container layout */
+html:not([data-extendo-enabled="false"]) .Pane2,
+html:not([data-extendo-enabled="false"]) [class*="Pane2"] {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* Output section fills upper space and remains scrollable */
+html:not([data-extendo-enabled="false"]) .extendo-output-pane {
+  flex: 1 1 0% !important;
+  min-height: 40px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Stdin Drawer container */
+html:not([data-extendo-enabled="false"]) .extendo-stdin-pane {
+  flex: 0 0 var(--extendo-stdin-height, 180px) !important;
+  height: var(--extendo-stdin-height, 180px) !important;
+  min-height: 36px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  border-top: none !important;
+}
+
+html:not([data-extendo-enabled="false"]) .extendo-stdin-pane.extendo-stdin-collapsed {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  border-top: 1px solid #333333 !important;
+}
+
+html:not([data-extendo-enabled="false"]) .extendo-stdin-pane textarea {
+  flex: 1 1 0% !important;
+  height: 100% !important;
+  min-height: 24px !important;
+  width: 100% !important;
+  resize: none !important;
+  box-sizing: border-box !important;
+}
+
+/* The Horizontal Resizer Bar */
+html:not([data-extendo-enabled="false"]) .extendo-stdin-resizer {
+  position: relative !important;
+  width: 100% !important;
+  height: 9px !important;
+  min-height: 9px !important;
+  max-height: 9px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: row-resize !important;
+  z-index: 25 !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  background-color: transparent !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Dark Theme Divider Line */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-stdin-resizer .extendo-stdin-line {
+  position: absolute !important;
+  top: 4px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 1px !important;
+  background-color: #333333 !important;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, height 0.15s ease, top 0.15s ease !important;
+  pointer-events: none !important;
+}
+
+/* Dark Theme Centered Pill Notch */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-stdin-resizer .extendo-stdin-notch {
+  position: relative !important;
+  width: 32px !important;
+  height: 3px !important;
+  border-radius: 9999px !important;
+  background-color: #525252 !important;
+  z-index: 2 !important;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease !important;
+  pointer-events: none !important;
+}
+
+/* Dark Theme Hover & Active Dragging: Electric Blue Highlight */
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-stdin-resizer:hover .extendo-stdin-line,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-stdin-resizer.extendo-dragging .extendo-stdin-line {
+  background-color: #388bfd !important;
+  height: 2px !important;
+  top: 3.5px !important;
+  box-shadow: 0 0 6px rgba(56, 139, 253, 0.45) !important;
+}
+
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-stdin-resizer:hover .extendo-stdin-notch,
+html[data-extendo-theme="dark"]:not([data-extendo-enabled="false"]) .extendo-stdin-resizer.extendo-dragging .extendo-stdin-notch {
+  background-color: #388bfd !important;
+  box-shadow: 0 0 6px rgba(56, 139, 253, 0.5) !important;
+}
+
+/* Light Theme Divider Line & Notch */
+html[data-extendo-theme="light"] .extendo-stdin-resizer .extendo-stdin-line,
+html:not([data-extendo-theme="dark"]) .extendo-stdin-resizer .extendo-stdin-line {
+  position: absolute !important;
+  top: 4px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 1px !important;
+  background-color: #e5e5e5 !important;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, height 0.15s ease, top 0.15s ease !important;
+  pointer-events: none !important;
+}
+
+html[data-extendo-theme="light"] .extendo-stdin-resizer .extendo-stdin-notch,
+html:not([data-extendo-theme="dark"]) .extendo-stdin-resizer .extendo-stdin-notch {
+  position: relative !important;
+  width: 32px !important;
+  height: 3px !important;
+  border-radius: 9999px !important;
+  background-color: #cccccc !important;
+  z-index: 2 !important;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease !important;
+  pointer-events: none !important;
+}
+
+html[data-extendo-theme="light"] .extendo-stdin-resizer:hover .extendo-stdin-line,
+html[data-extendo-theme="light"] .extendo-stdin-resizer.extendo-dragging .extendo-stdin-line,
+html:not([data-extendo-theme="dark"]) .extendo-stdin-resizer:hover .extendo-stdin-line,
+html:not([data-extendo-theme="dark"]) .extendo-stdin-resizer.extendo-dragging .extendo-stdin-line {
+  background-color: #007aff !important;
+  height: 2px !important;
+  top: 3.5px !important;
+  box-shadow: 0 0 6px rgba(0, 122, 255, 0.35) !important;
+}
+
+html[data-extendo-theme="light"] .extendo-stdin-resizer:hover .extendo-stdin-notch,
+html[data-extendo-theme="light"] .extendo-stdin-resizer.extendo-dragging .extendo-stdin-notch,
+html:not([data-extendo-theme="dark"]) .extendo-stdin-resizer:hover .extendo-stdin-notch,
+html:not([data-extendo-theme="dark"]) .extendo-stdin-resizer.extendo-dragging .extendo-stdin-notch {
+  background-color: #007aff !important;
+  box-shadow: 0 0 6px rgba(0, 122, 255, 0.4) !important;
+}
+
+/* Global Resizing state (prevents text selection while dragging) */
+body.extendo-resizing-stdin,
+body.extendo-resizing-stdin * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  cursor: row-resize !important;
+}
+
+/* Hide resizer if extension is paused/disabled */
+html[data-extendo-enabled="false"] .extendo-stdin-resizer {
+  display: none !important;
+}
+

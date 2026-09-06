@@ -1,0 +1,73 @@
+{
+  "manifest_version": 3,
+  "name": "Extendo - LeetCode Playground & Editor Shortcuts",
+  "version": "1.4.6",
+  "description": "Enables VS Code line movement, duplication shortcuts, and authentic LeetCode Dark Mode exclusively for LeetCode Playground.",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "*://leetcode.com/*",
+    "*://*.leetcode.com/*",
+    "*://leetcode.cn/*",
+    "*://*.leetcode.cn/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://leetcode.com/playground*",
+        "*://*.leetcode.com/playground*",
+        "*://leetcode.cn/playground*",
+        "*://*.leetcode.cn/playground*"
+      ],
+      "css": ["content/theme.css"],
+      "js": ["content/extendo.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": [
+        "*://leetcode.com/playground*",
+        "*://*.leetcode.com/playground*",
+        "*://leetcode.cn/playground*",
+        "*://*.leetcode.cn/playground*"
+      ],
+      "js": ["content/bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content/extendo.js",
+        "content/theme.css",
+        "icons/*.png"
+      ],
+      "matches": [
+        "*://leetcode.com/*",
+        "*://*.leetcode.com/*",
+        "*://leetcode.cn/*",
+        "*://*.leetcode.cn/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Extendo - LeetCode Playground Shortcuts & Dark Mode",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
