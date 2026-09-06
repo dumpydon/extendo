@@ -30,18 +30,6 @@
 
 ## 🚀 How to Install
 
-```mermaid
-graph TD
-    A["Choose ONE way to get Extendo"] --> B["📦 Option A: 1-Click ZIP Download"]
-    A --> C["⚡ Option B: Clone via Git"]
-    B --> D["Unzip the folder"]
-    C --> E["Open chrome://extensions"]
-    D --> E
-    E --> F["Turn ON 'Developer Mode'"]
-    F --> G["Click 'Load unpacked' & select folder"]
-    G --> H["🎉 Ready on LeetCode!"]
-```
-
 ### Step 1: Get the Code (Choose ONE Option)
 
 <table>
@@ -66,17 +54,33 @@ graph TD
 
 ---
 
-### Step 2: Load in Google Chrome (30 Seconds)
+### Step 2: Load into Google Chrome (30 Seconds)
 
-1. Open Google Chrome and go to:
-   ```
+1. Open Google Chrome and copy & paste this URL into your address bar:
+   ```text
    chrome://extensions
    ```
-2. Turn **ON** the **Developer mode** toggle in the top-right corner.
-3. Click the **Load unpacked** button in the top-left corner.
-4. Select the unzipped `extendo` folder.
+   *(Or click **⋮ Menu** (top-right) &rarr; **Extensions** &rarr; **Manage Extensions**)*
 
-🎉 **Done!** Open any [LeetCode Playground](https://leetcode.com/playground/) and enjoy!
+2. **Turn ON Developer Mode**: Switch the toggle in the top-right corner.
+3. **Load Extendo**: Click the **Load unpacked** button in the top-left corner and select your unzipped `extendo` folder.
+
+<p align="center">
+  <img src="store_assets/chrome_install_guide.png" width="850" alt="Chrome Developer Mode and Load Unpacked Guide" />
+</p>
+
+🎉 **You're all set!** Open any [LeetCode Playground](https://leetcode.com/playground/) and Extendo is ready to use!
+
+---
+
+### 🗺️ Installation Flow
+
+```text
+Extendo Setup
+├── [Option A] 1-Click ZIP Download ──► Unzip folder ──┐
+│                                                      ├──► chrome://extensions ──► Developer Mode (ON) ──► Load unpacked ──► 🎉 Ready!
+└── [Option B] Git Clone ──────────────────────────────┘
+```
 
 ---
 
