@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     platformLabel.textContent = isMac ? 'macOS' : 'Windows / Linux';
   }
 
+  const columnToggle = document.getElementById('columnResizeToggle');
+  columnToggle.addEventListener('change', () => {
+    chrome.storage.local.set({ extendo_column_resize_enabled: columnToggle.checked });
+  });
+
+  const stdinToggle = document.getElementById('stdinResizeToggle');
+  stdinToggle.addEventListener('change', () => {
+    chrome.storage.local.set({ extendo_stdin_resize_enabled: stdinToggle.checked });
+  });
+
   const toggle = document.getElementById('extendoToggle');
   const toggleSubtitle = document.getElementById('toggleSubtitle');
   const statusBadge = document.getElementById('statusBadge');
@@ -107,7 +117,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Load saved state from chrome.storage.local
   if (chrome.storage && chrome.storage.local) {
-    chrome.storage.local.get(['extendo_enabled', 'extendo_theme', 'extendo_strip_color'], (result) => {
+    chrome.storage.local.get(['extendo_enabled', 'extendo_theme', 'extendo_strip_color', 'extendo_stdin_resize_enabled', 'extendo_column_resize_enabled'], (result) => {
+      columnToggle.checked = result.extendo_column_resize_enabled !== false;
+      stdinToggle.checked = result.extendo_stdin_resize_enabled !== false;
       const enabled = result.extendo_enabled !== false; // Default true
       toggle.checked = enabled;
       updateStatusUI(enabled);

@@ -1,0 +1,52 @@
+/* Keep both original column nodes and the STDIN subtree in place. */
+html .playground-base > .row.extendo-columns-enabled {
+  position: relative;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+html .playground-base > .row.extendo-columns-enabled > .editor-base {
+  flex: 0 0 var(--extendo-code-width, 58.333333%) !important;
+  width: var(--extendo-code-width, 58.333333%) !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  box-sizing: border-box;
+}
+html .playground-base > .row.extendo-columns-enabled > .console-base {
+  flex: 0 0 calc(100% - var(--extendo-code-width, 58.333333%)) !important;
+  width: calc(100% - var(--extendo-code-width, 58.333333%)) !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  box-sizing: border-box;
+}
+html .playground-base > .row.extendo-columns-enabled > .extendo-column-resizer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--extendo-code-width, 58.333333%);
+  transform: translateX(-50%);
+  width: 10px;
+  z-index: 30;
+  cursor: ew-resize;
+  touch-action: none;
+  user-select: none;
+  background: transparent !important;
+  border: 0 !important;
+}
+html .playground-base > .row.extendo-columns-enabled > .extendo-column-resizer::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 22px);
+  left: 3px;
+  height: 44px;
+  width: 4px;
+  border-radius: 4px;
+  background: #8a8a8a;
+}
+html .playground-base > .row.extendo-columns-enabled > .extendo-column-resizer:hover,
+html .playground-base > .row.extendo-columns-enabled > .extendo-column-resizer:focus-visible,
+html .playground-base > .row.extendo-columns-enabled > .extendo-column-resizer.extendo-dragging {
+  background: #388bfd40 !important;
+  outline: 1px solid #388bfd;
+}
+html.extendo-resizing-columns,
+html.extendo-resizing-columns * { cursor: ew-resize !important; user-select: none !important; }

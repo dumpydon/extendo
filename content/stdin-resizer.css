@@ -1,0 +1,46 @@
+/* Override BOTH of LeetCode's fixed 200px heights, scoped to the console.
+   Preserve the existing button's -24px overlap and all column widths. */
+.playground-base .console-base.extendo-stdin-enabled.show-stdin > .result {
+  height: calc(100% - var(--extendo-stdin-height, 200px)) !important;
+}
+.playground-base .console-base.extendo-stdin-enabled.show-stdin > .console-input-base {
+  height: var(--extendo-stdin-height, 200px) !important;
+  position: relative;
+  transition: none !important;
+}
+html .playground-base .console-base .extendo-stdin-resizer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -7px;
+  height: 10px;
+  z-index: 20;
+  cursor: ns-resize;
+  touch-action: none;
+  user-select: none;
+  background: transparent !important;
+  border: 0 !important;
+  box-sizing: border-box;
+}
+html .playground-base .console-base .extendo-stdin-resizer::after {
+  content: '';
+  position: absolute;
+  left: calc(50% - 22px);
+  top: 3px;
+  width: 44px;
+  height: 4px;
+  border-radius: 4px;
+  background: #8a8a8a;
+}
+html .playground-base .console-base .extendo-stdin-resizer:hover,
+html .playground-base .console-base .extendo-stdin-resizer:focus-visible,
+html .playground-base .console-base .extendo-stdin-resizer.extendo-dragging {
+  background: #388bfd40 !important;
+  outline: 1px solid #388bfd;
+}
+html .playground-base .console-base .extendo-stdin-resizer:hover::after,
+html .playground-base .console-base .extendo-stdin-resizer:focus-visible::after,
+html .playground-base .console-base .extendo-stdin-resizer.extendo-dragging::after { background: #388bfd; }
+html .playground-base .console-base .extendo-stdin-resizer[hidden] { display: none !important; }
+html.extendo-resizing-stdin,
+html.extendo-resizing-stdin * { cursor: ns-resize !important; user-select: none !important; }

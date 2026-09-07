@@ -11,7 +11,8 @@ Extendo does **NOT** collect, transmit, store, or sell any personal data, person
 The extension uses the standard browser `storage` API (`chrome.storage.local` and `localStorage`) strictly to save your local UI preferences:
 - Appearance theme (Dark, Light, or System default)
 - Active line highlight strip color choice
-- Stdin drawer custom height
+- Stdin drawer custom height and resize feature enabled/disabled state
+- Code/output divider position and column resize enabled/disabled state
 - Extension enabled/disabled state
 
 This data never leaves your device and is never transmitted to any external servers.

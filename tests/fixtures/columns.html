@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Extendo layout verification</title>
+<link rel="stylesheet" href="../../content/theme.css">
+<link rel="stylesheet" href="../../content/stdin-resizer.css">
+<link rel="stylesheet" href="../../content/column-resizer.css">
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;font:14px sans-serif}nav{height:50px;padding:12px;background:#eee}button{cursor:pointer}.playground-base{height:calc(100% - 50px)}.row{display:flex;height:100%;}.editor-base{width:58.333333333%;background:white;}.console-base{width:41.666666667%;height:100%;position:relative;border-left:1px solid #bbb;background:#f5f5f5;padding:0}.editor-base header,.console-header{height:44px;padding:12px}.code{white-space:pre;overflow:auto;height:calc(100% - 44px);padding:16px;color:#358}.result{height:100%;display:flex;flex-flow:column;overflow:auto}.output-base{flex:1;overflow:auto;padding:10px}.console-base.show-stdin .result{height:calc(100% - 200px)!important}.console-base.show-stdin .console-input-base{height:200px}.console-input-base{margin-top:-24px;width:100%;transition:.4s}.input-toggle-btn{height:24px;position:relative;z-index:10;display:block}.console-input-base textarea{height:100%;width:100%;display:none;resize:none}.show-stdin .console-input-base textarea{display:block}
+</style></head><body>
+<nav><label><input type="checkbox" id="columns" checked>Resize columns</label> <label><input type="checkbox" id="stdin" checked>Resize STDIN</label> <label><input type="checkbox" id="master" checked>Extension enabled</label> <label><input type="checkbox" id="dark">Dark theme</label></nav>
+<div class="playground-base"><div class="row"><div class="col-sm-7 editor-base"><header>Run Code · Python3</header><div class="code" contenteditable="true">def solve():
+    values = list(map(int, input().split()))
+    print(sum(values))
+
+solve()</div></div><div class="col-sm-5 console-base show-stdin"><div class="result"><div class="console-header">Output:</div><div class="output-base"><pre>42</pre></div></div><div class="input console-input-base"><button class="input-toggle-btn">stdin</button><textarea aria-label="STDIN">4
+5
+20 5 1 4 2
+3
+1434 7 1442
+1
+1
+5
+999999999 999999999 999999999 1000000000 1000000000</textarea></div></div></div></div>
+<script>
+const listeners=[];
+const prefs=JSON.parse(localStorage.getItem('fixturePrefs')||'{}');
+window.chrome={storage:{onChanged:{addListener:fn=>listeners.push(fn)},local:{get:(keys,fn)=>fn(prefs),set:obj=>{Object.assign(prefs,obj);localStorage.setItem('fixturePrefs',JSON.stringify(prefs));const changes=Object.fromEntries(Object.entries(obj).map(([key,newValue])=>[key,{newValue}]));listeners.forEach(fn=>fn(changes,'local'));}}}};
+for(const [id,key] of [['columns','extendo_column_resize_enabled'],['stdin','extendo_stdin_resize_enabled'],['master','extendo_enabled']]){const input=document.getElementById(id);input.checked=prefs[key]!==false;input.onchange=()=>chrome.storage.local.set({[key]:input.checked});}
+document.getElementById('dark').onchange=e=>document.documentElement.setAttribute('data-extendo-theme',e.target.checked?'dark':'light');
+document.querySelector('.input-toggle-btn').onclick=()=>document.querySelector('.console-base').classList.toggle('show-stdin');
+</script><script src="../../content/stdin-resizer.js"></script><script src="../../content/column-resizer.js"></script></body></html>

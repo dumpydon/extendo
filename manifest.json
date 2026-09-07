@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Extendo - LeetCode Playground & Editor Shortcuts",
-  "version": "1.4.6",
-  "description": "Enables VS Code line movement, duplication shortcuts, and authentic LeetCode Dark Mode exclusively for LeetCode Playground.",
+  "version": "1.6.1",
+  "description": "VS Code shortcuts, dark mode, resizable STDIN, and adjustable code/output columns for LeetCode Playground.",
   "permissions": [
     "storage",
     "tabs"
@@ -21,8 +21,12 @@
         "*://leetcode.cn/playground*",
         "*://*.leetcode.cn/playground*"
       ],
-      "css": ["content/theme.css"],
-      "js": ["content/extendo.js"],
+      "css": [
+        "content/theme.css"
+      ],
+      "js": [
+        "content/extendo.js"
+      ],
       "run_at": "document_start",
       "world": "MAIN",
       "all_frames": true,
@@ -35,10 +39,18 @@
         "*://leetcode.cn/playground*",
         "*://*.leetcode.cn/playground*"
       ],
-      "js": ["content/bridge.js"],
+      "js": [
+        "content/bridge.js",
+        "content/stdin-resizer.js",
+        "content/column-resizer.js"
+      ],
       "run_at": "document_start",
       "all_frames": true,
-      "match_about_blank": true
+      "match_about_blank": true,
+      "css": [
+        "content/stdin-resizer.css",
+        "content/column-resizer.css"
+      ]
     }
   ],
   "web_accessible_resources": [

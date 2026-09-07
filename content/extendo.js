@@ -1,5 +1,5 @@
 /**
- * Extendo - LeetCode Playground & Editor Shortcuts (v1.4.6)
+ * Extendo - LeetCode Playground & Editor Shortcuts (v1.6.1)
  * Universal Code Editor Keybinding Suite & LeetCode Dark Theme Engine
  * 
  * Supports:
@@ -98,9 +98,6 @@
       }
     } catch (_) {}
 
-    try {
-      setupStdinResizer();
-    } catch (_) {}
 
     console.log(`%c[Extendo] Extension is now ${isEnabled ? 'ENABLED ✅' : 'PAUSED ⏸️'}`, 'color: #00b8a3; font-weight: bold;');
   }
@@ -183,9 +180,6 @@
   }
 
   function applyDarkLayoutHelpers() {
-    try {
-      setupStdinResizer();
-    } catch (_) {}
 
     if (!isDarkThemeActive()) {
       const liveBtns = document.querySelectorAll('.extendo-live-btn');
@@ -718,253 +712,6 @@
     } catch (_) {}
   }
 
-  /* ==========================================================================
-     LeetCode-Style Stdin Drawer Resizer & Drag Mechanics
-     ========================================================================== */
-
-  const STDIN_DEFAULT_HEIGHT = 180;
-  const STDIN_MIN_HEIGHT = 48;
-  let stdinResizerBound = false;
-
-  function getSavedStdinHeight() {
-    try {
-      const stored = localStorage.getItem('extendo_stdin_height') || sessionStorage.getItem('extendo_stdin_height');
-      if (stored) {
-        const val = parseInt(stored, 10);
-        if (!isNaN(val) && val >= STDIN_MIN_HEIGHT) {
-          return val;
-        }
-      }
-    } catch (_) {}
-    return STDIN_DEFAULT_HEIGHT;
-  }
-
-  function saveStdinHeight(h) {
-    try {
-      localStorage.setItem('extendo_stdin_height', String(h));
-      sessionStorage.setItem('extendo_stdin_height', String(h));
-    } catch (_) {}
-  }
-
-  function updateStdinVisibility(pane2, stdinPane, resizer) {
-    if (!pane2 || !stdinPane || !resizer) return;
-    if (!isExtendoEnabled()) {
-      resizer.style.display = 'none';
-      return;
-    }
-
-    const textarea = pane2.querySelector('textarea');
-    const checkbox = pane2.querySelector('input[type="checkbox"]');
-    const isChecked = checkbox ? checkbox.checked : true;
-    const isVisible = textarea ? (textarea.offsetParent !== null || textarea.clientHeight > 0) : false;
-
-    const isOpen = (checkbox ? isChecked : isVisible);
-
-    if (isOpen) {
-      resizer.style.display = 'flex';
-      stdinPane.classList.remove('extendo-stdin-collapsed');
-    } else {
-      resizer.style.display = 'none';
-      stdinPane.classList.add('extendo-stdin-collapsed');
-    }
-  }
-
-  function setupDragListeners(resizer, pane2, stdinPane) {
-    let isDragging = false;
-    let startY = 0;
-    let startHeight = 0;
-
-    function onMouseDown(e) {
-      if (e.button !== 0) return; // Left click only
-      if (!isExtendoEnabled()) return;
-
-      isDragging = true;
-      startY = e.clientY;
-
-      const computedH = parseFloat(getComputedStyle(stdinPane).height) || stdinPane.offsetHeight || getSavedStdinHeight();
-      startHeight = computedH;
-
-      resizer.classList.add('extendo-dragging');
-      document.body.classList.add('extendo-resizing-stdin');
-
-      window.addEventListener('mousemove', onMouseMove, { capture: true, passive: false });
-      window.addEventListener('mouseup', onMouseUp, { capture: true, passive: false });
-
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
-    function onMouseMove(e) {
-      if (!isDragging) return;
-      e.preventDefault();
-      e.stopPropagation();
-
-      const dy = startY - e.clientY; // Upward drag expands stdin height
-      const paneRect = pane2.getBoundingClientRect();
-      const maxAllowedHeight = Math.max(STDIN_MIN_HEIGHT, Math.round(paneRect.height - 80));
-      const newHeight = Math.min(maxAllowedHeight, Math.max(STDIN_MIN_HEIGHT, Math.round(startHeight + dy)));
-
-      pane2.style.setProperty('--extendo-stdin-height', `${newHeight}px`);
-    }
-
-    function onMouseUp(e) {
-      if (!isDragging) return;
-      isDragging = false;
-
-      resizer.classList.remove('extendo-dragging');
-      document.body.classList.remove('extendo-resizing-stdin');
-
-      window.removeEventListener('mousemove', onMouseMove, { capture: true });
-      window.removeEventListener('mouseup', onMouseUp, { capture: true });
-
-      const finalHeight = parseInt(pane2.style.getPropertyValue('--extendo-stdin-height'), 10) || STDIN_DEFAULT_HEIGHT;
-      saveStdinHeight(finalHeight);
-
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
-    resizer.addEventListener('mousedown', onMouseDown);
-
-    // Double-click resets to default height
-    resizer.addEventListener('dblclick', (e) => {
-      e.preventDefault();
-      pane2.style.setProperty('--extendo-stdin-height', `${STDIN_DEFAULT_HEIGHT}px`);
-      saveStdinHeight(STDIN_DEFAULT_HEIGHT);
-    });
-  }
-
-  function setupStdinResizer() {
-    if (!isExtendoEnabled()) {
-      const existing = document.querySelector('.extendo-stdin-resizer');
-      if (existing) existing.style.display = 'none';
-      return;
-    }
-
-    const pane2 = document.querySelector('.Pane2, [class*="Pane2"]');
-    if (!pane2) return;
-
-    // Find textarea or stdin container in pane2
-    const textarea = pane2.querySelector('textarea');
-
-    let stdinPane = null;
-    if (textarea) {
-      let curr = textarea;
-      while (curr.parentElement && curr.parentElement !== pane2) {
-        if (curr.parentElement.querySelector('[class*="output"], [class*="console"], [class*="Output"], pre')) {
-          break;
-        }
-        curr = curr.parentElement;
-      }
-      stdinPane = curr;
-    }
-
-    if (!stdinPane) {
-      const candidates = pane2.querySelectorAll('[class*="stdin-wrapper"], [class*="stdin-container"], [class*="stdin"]');
-      for (let i = 0; i < candidates.length; i++) {
-        const cand = candidates[i];
-        let curr = cand;
-        while (curr.parentElement && curr.parentElement !== pane2) {
-          curr = curr.parentElement;
-        }
-        if (curr.parentElement === pane2) {
-          stdinPane = curr;
-          break;
-        }
-      }
-    }
-
-    if (!stdinPane) {
-      for (let i = 0; i < pane2.children.length; i++) {
-        const child = pane2.children[i];
-        const txt = (child.textContent || '').trim().toLowerCase();
-        if (txt.startsWith('stdin') || child.querySelector('textarea')) {
-          stdinPane = child;
-          break;
-        }
-      }
-    }
-
-    if (!stdinPane) return;
-
-    while (stdinPane.parentElement && stdinPane.parentElement !== pane2) {
-      stdinPane = stdinPane.parentElement;
-    }
-
-    if (stdinPane.parentElement !== pane2) return;
-
-    // Tag output sibling children before stdinPane
-    for (let i = 0; i < pane2.children.length; i++) {
-      const child = pane2.children[i];
-      if (child === stdinPane || child.classList.contains('extendo-stdin-resizer')) {
-        break;
-      }
-      child.classList.add('extendo-output-pane');
-    }
-
-    // Tag stdinPane
-    stdinPane.classList.add('extendo-stdin-pane');
-
-    // Get or create resizer
-    let resizer = pane2.querySelector('.extendo-stdin-resizer');
-    if (!resizer) {
-      resizer = document.createElement('div');
-      resizer.className = 'extendo-stdin-resizer';
-      resizer.setAttribute('role', 'separator');
-      resizer.setAttribute('aria-orientation', 'horizontal');
-      resizer.setAttribute('title', 'Drag to resize stdin (Double-click to reset)');
-
-      const line = document.createElement('div');
-      line.className = 'extendo-stdin-line';
-      resizer.appendChild(line);
-
-      const notch = document.createElement('div');
-      notch.className = 'extendo-stdin-notch';
-      resizer.appendChild(notch);
-
-      setupDragListeners(resizer, pane2, stdinPane);
-    }
-
-    // Ensure resizer is placed immediately before stdinPane
-    if (resizer.nextElementSibling !== stdinPane) {
-      pane2.insertBefore(resizer, stdinPane);
-    }
-
-    // Apply saved height CSS variable to pane2
-    const currentVar = pane2.style.getPropertyValue('--extendo-stdin-height');
-    if (!currentVar) {
-      const savedH = getSavedStdinHeight();
-      pane2.style.setProperty('--extendo-stdin-height', `${savedH}px`);
-    }
-
-    // Check visibility / collapsed state
-    updateStdinVisibility(pane2, stdinPane, resizer);
-
-    // Bind pane2 events once
-    if (!stdinResizerBound) {
-      stdinResizerBound = true;
-      pane2.addEventListener('click', () => {
-        setTimeout(() => updateStdinVisibility(pane2, stdinPane, resizer), 50);
-      });
-      pane2.addEventListener('change', () => {
-        setTimeout(() => updateStdinVisibility(pane2, stdinPane, resizer), 50);
-      });
-    }
-  }
-
-  // Handle window resizing to keep heights within pane2 bounds
-  window.addEventListener('resize', () => {
-    const pane2 = document.querySelector('.Pane2, [class*="Pane2"]');
-    if (!pane2) return;
-    const currentH = parseInt(pane2.style.getPropertyValue('--extendo-stdin-height'), 10);
-    if (currentH) {
-      const maxAllowed = Math.max(STDIN_MIN_HEIGHT, Math.round(pane2.clientHeight - 80));
-      if (currentH > maxAllowed && maxAllowed > STDIN_MIN_HEIGHT) {
-        pane2.style.setProperty('--extendo-stdin-height', `${maxAllowed}px`);
-      }
-    }
-  }, { passive: true });
-
   function scanAndHookCodeMirror() {
     const cmElements = document.querySelectorAll('.CodeMirror');
     for (const el of cmElements) {
@@ -973,14 +720,10 @@
       }
     }
     applyDarkLayoutHelpers();
-    try {
-      setupStdinResizer();
-    } catch (_) {}
   }
 
-  // Non-intrusive MutationObserver: ONLY checks addedNodes for .CodeMirror, .Pane2, or stdin
+  // Non-intrusive MutationObserver: checks added CodeMirror nodes
   const nodeObserver = new MutationObserver((mutations) => {
-    let shouldCheckStdin = false;
     for (const m of mutations) {
       for (const node of m.addedNodes) {
         if (node.nodeType === 1) { // ELEMENT_NODE
@@ -994,17 +737,8 @@
               }
             }
           }
-
-          if (node.matches && (node.matches('.Pane2, [class*="Pane2"], textarea, [class*="stdin"]') || (node.querySelector && node.querySelector('.Pane2, textarea, [class*="stdin"]')))) {
-            shouldCheckStdin = true;
-          }
         }
       }
-    }
-    if (shouldCheckStdin) {
-      try {
-        setupStdinResizer();
-      } catch (_) {}
     }
   });
 
