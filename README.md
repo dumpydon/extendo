@@ -86,13 +86,14 @@ config:
     rankSpacing: 14
     padding: 8
     diagramPadding: 4
+    wrappingWidth: 600
 ---
 flowchart TD
-    A["📦 Option A<br/>Download ZIP → Unzip it"] --> C["🌐 Open Chrome<br/>Paste chrome://extensions/ in the address bar"]
+    A["📦 Option A<br/>Download ZIP → Unzip it"] --> C["🌐 Open Chrome<br/>Paste<br/>chrome://extensions/<br/>in the address bar"]
     B["💻 Option B: Clone with Git<br/>git clone https://github.com/dumpydon/extendo.git"] --> C
-    C --> D["🔧 Turn on Developer mode → Click Load unpacked"]
-    D --> E["📂 Choose the entire Extendo folder"]
-    E --> F["🎉 Open LeetCode Playground — ready!"]
+    C --> D["🔧 Turn on Developer mode<br/>→ Click Load unpacked"]
+    D --> E["📂 Choose the entire<br/>Extendo folder"]
+    E --> F["🎉 Open LeetCode<br/>Playground — ready!"]
     classDef blue fill:#dbeafe,stroke:#3b82f6,color:#12366a,stroke-width:1px
     class A,B,C,D,E,F blue
 ```
