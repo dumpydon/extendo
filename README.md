@@ -8,7 +8,7 @@
 ---
 
 <p align="center">
-  <a href="store_assets/features-preview.webp"><img src="store_assets/features-preview.webp" width="900" alt="Extendo Playground with resizable code and STDIN panels on the left, and extension settings on the right" /></a>
+  <a href="store_assets/features-preview.png"><img src="store_assets/features-preview.png" width="900" alt="Extendo Playground with resizable code and STDIN panels on the left, and extension settings on the right" /></a>
 </p>
 
 ## ✨ Features
