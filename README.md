@@ -19,20 +19,12 @@
 
 ---
 
-## 🎚️ Make the Playground Fit Your Workflow
+## 🎚️ How to Use
 
-Open Extendo’s popup to find **Resize STDIN** and **Resize columns**. Both are enabled by default and work in light and dark themes.
-
-| Slider | How to use it | Limits & reset |
-| :--- | :--- | :--- |
-| ↕️ **STDIN height** | Expand LeetCode’s **stdin** button, then drag the handle above it up or down. | Starts at **200px**. Stops before covering the output header. Double-click to reset. |
-| ↔️ **Column width** | Drag the vertical handle between the code editor and output. | Code takes **40%–83.33%** of the page width. Double-click to restore the original **58.33%** split. |
-
-**Output and STDIN stay together in the right column.** Resizing STDIN changes its height; resizing columns changes the width of the entire code/output layout. At the rightmost limit, output and STDIN still have one-sixth of the page width.
-
-Your height and column position are saved across playgrounds and reloads. Turning a slider off restores that part of LeetCode’s original layout; turning it back on restores your saved size. The master extension switch pauses both sliders too.
-
-**Keyboard controls:** Focus a handle with <kbd>Tab</kbd>. Use <kbd>↑</kbd>/<kbd>↓</kbd> for STDIN or <kbd>←</kbd>/<kbd>→</kbd> for columns. Hold <kbd>Shift</kbd> for larger steps; <kbd>Home</kbd>/<kbd>End</kbd> jump to the limits.
+- **STDIN:** Click **stdin** to expand it, then drag the handle above it up/down.
+- **Columns:** Drag the divider between code and output left/right. STDIN stays on the right.
+- **Keyboard:** Press <kbd>Tab</kbd> to focus a handle, then use the arrow keys. Hold <kbd>Shift</kbd> for bigger steps; <kbd>Home</kbd>/<kbd>End</kbd> jump to the limits.
+- **Reset & settings:** Double-click a handle to reset. Click Extendo in Chrome’s extensions menu to toggle either slider. Sizes save automatically.
 
 ---
 
@@ -49,57 +41,30 @@ Your height and column position are saved across playgrounds and reloads. Turnin
 
 ## 🚀 How to Install
 
-### Step 1: Get the Code (Choose ONE Option)
+### 1. Get Extendo — choose A or B
 
-<table>
-  <tr>
-    <th width="50%" align="center">📦 Option A: 1-Click ZIP (Easiest — No Git)</th>
-    <th width="50%" align="center">⚡ Option B: Git Clone (Terminal / Git Bash)</th>
-  </tr>
-  <tr valign="top">
-    <td>
-      <ol>
-        <li>👉 <a href="https://github.com/dumpydon/extendo/raw/main/extendo.zip"><b>Download extendo.zip</b></a><br>
-        <i>(or click green <b>&lt;&gt; Code</b> button &rarr; <b>Download ZIP</b>)</i></li>
-        <li><b>Extract / Unzip</b> the file on your computer.</li>
-      </ol>
-    </td>
-    <td>
-      <p>Run this in Terminal or Git Bash:</p>
-      <code>git clone https://github.com/dumpydon/extendo.git</code>
-    </td>
-  </tr>
-</table>
+**📦 Option A: Download ZIP (recommended for most people)**
 
----
+[Download Extendo](https://github.com/dumpydon/extendo/raw/main/extendo.zip), then unzip it: double-click the ZIP on Mac, or right-click → **Extract All** on Windows. Keep the extracted folder somewhere permanent, such as Documents.
 
-### Step 2: Load into Google Chrome (30 Seconds)
+**⚡ Option B: Use Git**
 
-1. Open Google Chrome and copy & paste this URL into your address bar:
-   ```text
-   chrome://extensions
-   ```
-   *(Or click **⋮ Menu** (top-right) &rarr; **Extensions** &rarr; **Manage Extensions**)*
+Run this in your terminal:
 
-2. **Turn ON Developer Mode**: Switch the toggle in the top-right corner.
-3. **Load Extendo**: Click the **Load unpacked** button in the top-left corner and select your unzipped `extendo` folder.
-
-<p align="center">
-  <img src="store_assets/chrome_install_guide.png" width="850" alt="Chrome Developer Mode and Load Unpacked Guide" />
-</p>
-
-🎉 **You're all set!** Open any [LeetCode Playground](https://leetcode.com/playground/) and Extendo is ready to use!
-
----
-
-### 🗺️ Installation Flow
-
-```text
-Extendo Setup
-├── [Option A] 1-Click ZIP Download ──► Unzip folder ──┐
-│                                                      ├──► chrome://extensions ──► Developer Mode (ON) ──► Load unpacked ──► 🎉 Ready!
-└── [Option B] Git Clone ──────────────────────────────┘
+```sh
+git clone https://github.com/dumpydon/extendo.git
 ```
+
+### 2. Add it to Chrome — same steps for both options
+
+1. Open **Google Chrome**, paste `chrome://extensions` into the address bar, and press **Enter**.
+2. Turn on **Developer mode** in the top-right corner.
+3. Click **Load unpacked** in the top-left corner.
+4. Select the extracted or cloned **folder containing `manifest.json`** — not the ZIP file.
+
+### 3. Start using it
+
+Open [LeetCode Playground](https://leetcode.com/playground/), or refresh it if already open. Done! Click Chrome’s puzzle-piece **Extensions** button, then **Extendo**, to find its settings.
 
 ---
 
@@ -110,36 +75,6 @@ Extendo Setup
 3. Refresh your open playground tabs. The popup should show **v1.6.1**, **Resize STDIN**, and **Resize columns**.
 
 > 💡 Refreshing the website alone does **not** reload the extension’s updated manifest or content scripts. If you extracted to a new folder, use **Load unpacked** to select that folder instead.
-
----
-
-## 🛠️ Development & Checks
-
-Run the lifecycle tests with Node.js:
-
-```sh
-node --test tests/*.test.cjs
-```
-
-These cover drag limits, keyboard controls, saved preferences, toggle cleanup, collapse/reopen, and handle replacement using a minimal DOM fixture.
-
-For browser checks, serve the project locally:
-
-```sh
-python3 -m http.server 8765 --bind 127.0.0.1
-```
-
-Open `http://127.0.0.1:8765/tests/fixtures/columns.html`. The fixture runs both production resize scripts with mock extension storage against the inspected Playground layout. Check both drag limits, independent toggles, dark mode, and reload persistence. Verify the unpacked extension on LeetCode too; the fixture does not include the live editor or iframe.
-
-The resize scripts run in the isolated world inside the Playground iframe. They target the existing editor and console containers without moving the editor, output, or input nodes. Preferences use `chrome.storage.local`.
-
-### 📦 Rebuild the Download ZIP
-
-```sh
-python3 scripts/package.py
-```
-
-This rebuilds `extendo.zip` from the current extension files, README, privacy policy, icons, and README images, then verifies its contents. Run it after changing files intended for distribution so the one-click download stays in sync with the repo.
 
 ---
 
