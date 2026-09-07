@@ -7,6 +7,10 @@
 
 ---
 
+<p align="center">
+  <a href="store_assets/features-preview.webp"><img src="store_assets/features-preview.webp" width="900" alt="Extendo Playground with resizable code and STDIN panels on the left, and extension settings on the right" /></a>
+</p>
+
 ## ✨ Features
 
 - ⚡ **VS Code Keyboard Shortcuts**: Move and duplicate lines up or down effortlessly.
