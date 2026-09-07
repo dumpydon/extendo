@@ -58,10 +58,10 @@
 
 ### 2. Add it to Chrome — same steps for both options
 
-1. Open **Google Chrome**, paste `chrome://extensions` into the address bar, and press **Enter**.
+1. Open **Google Chrome**, paste `chrome://extensions/` into the address bar, and press **Enter**.
 2. Turn on **Developer mode** in the top-right corner.
 3. Click **Load unpacked** in the top-left corner.
-4. Select the extracted or cloned **folder containing `manifest.json`** — not the ZIP file.
+4. Choose the **entire extracted or cloned Extendo folder**.
 
 ### 3. Start using it
 
@@ -72,14 +72,31 @@ Open [LeetCode Playground](https://leetcode.com/playground/), or refresh it if a
 ### 🗺️ Installation at a Glance
 
 ```mermaid
+---
+config:
+  theme: base
+  themeVariables:
+    fontSize: 16px
+    primaryColor: "#dbeafe"
+    primaryTextColor: "#12366a"
+    primaryBorderColor: "#3b82f6"
+    lineColor: "#3b82f6"
+  flowchart:
+    nodeSpacing: 12
+    rankSpacing: 14
+    padding: 8
+    diagramPadding: 4
+---
 flowchart TD
-    A["Option A: Download ZIP → Unzip"] --> C["Open Chrome → chrome://extensions"]
-    B["Option B: Clone with Git"] --> C
-    C --> D["Turn on Developer mode"]
-    D --> E["Click Load unpacked"]
-    E --> F["Choose the folder containing manifest.json"]
-    F --> G["Open LeetCode Playground — ready!"]
+    A["📦 Option A<br/>Download ZIP → Unzip it"] --> C["🌐 Open Chrome<br/>Paste chrome://extensions/ in the address bar"]
+    B["💻 Option B: Clone with Git<br/>git clone https://github.com/dumpydon/extendo.git"] --> C
+    C --> D["🔧 Turn on Developer mode → Click Load unpacked"]
+    D --> E["📂 Choose the entire Extendo folder"]
+    E --> F["🎉 Open LeetCode Playground — ready!"]
+    classDef blue fill:#dbeafe,stroke:#3b82f6,color:#12366a,stroke-width:1px
+    class A,B,C,D,E,F blue
 ```
+
 
 ---
 
