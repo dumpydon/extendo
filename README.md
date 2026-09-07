@@ -12,19 +12,10 @@
 - ⚡ **VS Code Keyboard Shortcuts**: Move and duplicate lines up or down effortlessly.
 - 🌙 **Authentic Dark Mode**: Official LeetCode dark gray (`#262626`), crisp white cursor, and exact Python syntax highlighting.
 - 🎨 **Line Highlight Colors**: 8 customizable active line highlight tints (Blue, Yellow, Green, Red, Magenta, Pink, Orange, White).
-- ↕️ **Resizable STDIN**: Drag up/down to give test input more room. Your preferred height is remembered.
-- ↔️ **Resizable Columns**: Drag the full-height code/output divider between **40% and 83.33%** of the page width.
+- ↕️ **Resizable STDIN**: Expand **stdin**, then drag its top handle up/down. For keyboard control, focus it with <kbd>Tab</kbd> and use <kbd>↑</kbd>/<kbd>↓</kbd>; hold <kbd>Shift</kbd> for bigger steps, or <kbd>Home</kbd>/<kbd>End</kbd> for the limits. Double-click to reset. Height saves automatically.
+- ↔️ **Resizable Columns**: Drag the code/output divider between **40% and 83.33%** of the page width; STDIN stays on the right. Focus with <kbd>Tab</kbd> and use <kbd>←</kbd>/<kbd>→</kbd>; hold <kbd>Shift</kbd> for bigger steps, or <kbd>Home</kbd>/<kbd>End</kbd> for the limits. Double-click to reset. Position saves automatically.
 - 🎛️ **Independent Slider Toggles**: Enable or disable **Resize STDIN** and **Resize columns** separately in the popup.
 - 🔒 **Playground Only**: Runs on LeetCode Playground pages (`leetcode.com` and `leetcode.cn`, including subdomains).
-
----
-
-## 🎚️ How to Use
-
-- **STDIN:** Click **stdin** to expand it, then drag the handle above it up/down.
-- **Columns:** Drag the divider between code and output left/right. STDIN stays on the right.
-- **Keyboard:** Press <kbd>Tab</kbd> to focus a handle, then use the arrow keys. Hold <kbd>Shift</kbd> for bigger steps; <kbd>Home</kbd>/<kbd>End</kbd> jump to the limits.
-- **Reset & settings:** Double-click a handle to reset. Click Extendo in Chrome’s extensions menu to toggle either slider. Sizes save automatically.
 
 ---
 
@@ -43,17 +34,27 @@
 
 ### 1. Get Extendo — choose A or B
 
-**📦 Option A: Download ZIP (recommended for most people)**
-
-[Download Extendo](https://github.com/dumpydon/extendo/raw/main/extendo.zip), then unzip it: double-click the ZIP on Mac, or right-click → **Extract All** on Windows. Keep the extracted folder somewhere permanent, such as Documents.
-
-**⚡ Option B: Use Git**
-
-Run this in your terminal:
-
-```sh
-git clone https://github.com/dumpydon/extendo.git
-```
+<table>
+  <tr>
+    <th width="50%">📦 Option A: Download ZIP</th>
+    <th width="50%">⚡ Option B: Use Git</th>
+  </tr>
+  <tr valign="top">
+    <td>
+      <p><b>Recommended — no terminal needed.</b></p>
+      <ol>
+        <li><a href="https://github.com/dumpydon/extendo/raw/main/extendo.zip"><b>Download Extendo</b></a>.</li>
+        <li>Unzip it: double-click on Mac, or right-click → <b>Extract All</b> on Windows.</li>
+        <li>Keep the extracted folder in Documents or another permanent location.</li>
+      </ol>
+    </td>
+    <td>
+      <p>Run this in your terminal:</p>
+      <pre><code>git clone https://github.com/dumpydon/extendo.git</code></pre>
+      <p>This creates an <b>extendo</b> folder. Use it in the steps below.</p>
+    </td>
+  </tr>
+</table>
 
 ### 2. Add it to Chrome — same steps for both options
 
@@ -65,6 +66,20 @@ git clone https://github.com/dumpydon/extendo.git
 ### 3. Start using it
 
 Open [LeetCode Playground](https://leetcode.com/playground/), or refresh it if already open. Done! Click Chrome’s puzzle-piece **Extensions** button, then **Extendo**, to find its settings.
+
+---
+
+### 🗺️ Installation at a Glance
+
+```mermaid
+flowchart TD
+    A["Option A: Download ZIP → Unzip"] --> C["Open Chrome → chrome://extensions"]
+    B["Option B: Clone with Git"] --> C
+    C --> D["Turn on Developer mode"]
+    D --> E["Click Load unpacked"]
+    E --> F["Choose the folder containing manifest.json"]
+    F --> G["Open LeetCode Playground — ready!"]
+```
 
 ---
 
